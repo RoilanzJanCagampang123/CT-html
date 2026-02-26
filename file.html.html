@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Andrew Tate Online Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: black;
+            color: gold;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .container {
+            padding: 40px;
+        }
+
+        .products {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            background-color: white;
+            padding: 20px;
+            width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: green;
+        }
+
+        button {
+            background-color: gold;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: black;
+            color: white;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+
+        /* Hide sections initially */
+        #checkoutPage {
+            display: none;
+        }
+
+        .order-summary {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MAIN SHOP PAGE -->
+    <div id="shopPage">
+        <header>
+            <h1>Andrew Tate Online Shop</h1>
+            <p>Premium Collection</p>
+        </header>
+
+        <div class="container">
+
+            <h2>Products</h2>
+
+            <div class="products">
+
+                <div class="product">
+                    <img src="data:image/jpeg;base64,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">
+                    <h3>White Sneakers</h3>
+                    <p class="price">₱1,499</p>
+                    <button onclick="buyNow('White Sneakers', 1499)">Buy Now</button>
+                </div>
+
+                <div class="product">
+                    <img src="data:image/jpeg;base64,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">
+                    <h3>Black Hoodie</h3>
+                    <p class="price">₱899</p>
+                    <button onclick="buyNow('Black Hoodie', 899)">Buy Now</button>
+                </div>
+
+                <div class="product">
+                    <img src="data:image/jpeg;base64,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TZIwRedQKmJMTqZFOmw6RN98cSrE5rzhK9V2Hr02hw61Ok0ZKLiO2x1L+te2xPSF+pFiwqvxhY3R726Wj8rYd4tDie2+F0VOloVG16BcHsINgQZafRaDa5uBvMdouyhtQ94aCSQAASSbAAakncFQ3Ojy1+l1Ogou+pZmA/MTLX1D4jM1o3NzkznbHh2/zkYrHUGUpDGhrek6Mw6o78TrWGkAWk5vwgQzL58+z4cLzQ48+fPyXIPnz5+CR58+z4d0gPPnz8FR9iofPnwXv2RhH13tYASJEwCbfyjhwEXgLw06JOvGL8Yk/CT792l3c13Is0WtxVdkON6bHTI3hzxpO/xj8AcQl/JDYowmHZTiHnrPsBc3jq21J0tJMWgLNoiyoiIgIiICIiAiIgIiICIiAiIgIiIC4e0EEESDYg6EHcQuUQRnafIbB1iXBhpuOppwAbQeoQW3AE2vAWAxHNp+Cs03kZmkGZm5Eze86yJ1urFRXaaVZV5tq40dTPg5wNrjcI36aEyIkz4q3N5ihYUw4RFnMjQiIJ74tEXiASDcCJs0oDafNpiSc7aVQOvdtyeM5ZB43773tH8XyWx9Lt4ao7W/RvbprcAtM+I3+C2fRNmmqX9H1pj6PVMaxB10363+JWU2ZyPx+IIFPCPF4LqktaOJnQgX3+8rZlE2aV1yJ5sKeGLcRiXCtWEENgZGRcQN5kA+waxJsVEUUREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREH/9k=">
+                    <h3>Sports Watch</h3>
+                    <p class="price">₱2,299</p>
+                    <button onclick="buyNow('Sports Watch', 2299)">Buy Now</button>
+                </div>
+
+            </div>
+
+            <h2>Customer Information</h2>
+
+            <form id="customerForm">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" placeholder="John Doe" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="johndoe@example.com" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="09123456789" required>
+
+                <label for="address">Address</label>
+                <textarea id="address" name="address" placeholder="Street, City, ZIP Code" required></textarea>
+
+                <label for="payment">Payment Method</label>
+                <select id="payment" name="payment" required>
+                    <option value="">Select a payment method</option>
+                    <option value="cod">Cash on Delivery</option>
+                    <option value="gcash">Gcash</option>
+                    <option value="bank">Bank Transfer</option>
+                </select>
+
+                <button type="button" onclick="proceedToCheckout()">Checkout</button>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- FAKE CHECKOUT PAGE -->
+    <div id="checkoutPage">
+        <header>
+            <h1>Checkout - Andrew Tate Online Shop</h1>
+        </header>
+        <div class="container">
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <p id="orderProduct"></p>
+                <p id="orderPrice"></p>
+                <h3>Customer Details</h3>
+                <p id="custName"></p>
+                <p id="custEmail"></p>
+                <p id="custPhone"></p>
+                <p id="custAddress"></p>
+                <p id="custPayment"></p>
+                <button onclick="completeOrder()">Confirm Order</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 Andrew Tate Online Shop | All Rights Reserved
+    </footer>
+
+    <script>
+        let selectedProduct = '';
+        let selectedPrice = 0;
+
+        function buyNow(product, price) {
+            selectedProduct = product;
+            selectedPrice = price;
+            // Scroll to customer form
+            document.getElementById('customerForm').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function proceedToCheckout() {
+            // Get customer info
+            const name = document.getElementById('fullname').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const payment = document.getElementById('payment').value;
+
+            if(!name || !email || !phone || !address || !payment) {
+                alert('Please fill all customer information.');
+                return;
+            }
+
+            // Fill checkout summary
+            document.getElementById('orderProduct').innerText = `Product: ${selectedProduct}`;
+            document.getElementById('orderPrice').innerText = `Price: ₱${selectedPrice}`;
+            document.getElementById('custName').innerText = `Name: ${name}`;
+            document.getElementById('custEmail').innerText = `Email: ${email}`;
+            document.getElementById('custPhone').innerText = `Phone: ${phone}`;
+            document.getElementById('custAddress').innerText = `Address: ${address}`;
+            document.getElementById('custPayment').innerText = `Payment Method: ${payment}`;
+
+            // Hide shop page, show checkout page
+            document.getElementById('shopPage').style.display = 'none';
+            document.getElementById('checkoutPage').style.display = 'block';
+        }
+
+        function completeOrder() {
+            alert('Thank you for your order! Your fake checkout is complete.');
+            // Reset the page
+            document.getElementById('checkoutPage').style.display = 'none';
+            document.getElementById('shopPage').style.display = 'block';
+            document.getElementById('customerForm').reset();
+        }
+    </script>
+
+</body>
+</html>
